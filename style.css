@@ -1,0 +1,38 @@
+.heading{
+    width:100%;
+    text-align: left;
+}
+
+.heading button{
+float: right;
+border: 2px solid white;
+}
+
+.heading h3{
+    display: inline;
+    padding-top: 4px;
+}
+
+.big_boi_image{
+    width: 100%;
+}
+
+#start, #status{
+    font-size: 39px;
+}
+
+#footer{
+    width: 100%;
+    font-size: 40px;
+    bottom: 0;
+    line-height: 2;
+}
+
+.modal-dialog{
+    width: 90%;
+}
+
+.instructions{
+    display: inline-block;
+    width: 45%;
+}
