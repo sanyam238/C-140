@@ -1,22 +1,21 @@
-marioX = 620;
-marioY = 336;
-NoseX =  0;
-NoseY = 0;
-img="";
 
 function preload() {
 	world_start = loadSound("world_start.wav");
-	img = loadImage("mario05.png");
+	mario_jump = loadSound("jump.wav");
+	mario_coin = loadSound("coin.wav");
+	game_over = loadSound("gameover.wav");
+	mario_kick = loadSound("kick.wav");
+	mario_die = loadSound("mariodie.wav");
 	setSprites();
 	MarioAnimation();
 }
 
 function setup() {
-	canvas = createCanvas(1240,536);
+	canvas = createCanvas(1240,336);
     canvas.parent("canvas");
     video = createCapture(VIDEO);
-	video.size(1240,500);
-	video.parent("game_console");
+	video.size(800,400);
+    video.parent("game_console");
 
 	PoseNet = ml5.poseNet(video,modelLoaded);
 	PoseNet.on('pose',gotPoses);
@@ -25,32 +24,17 @@ function setup() {
 
 function draw() {
 	game()
-     
-    image(img,marioX,marioY, 40,70);
-
-	if(NoseX < 620){
-		marioX = marioX - 1;
-	}
-
-	if(NoseX > 620){
-		marioX = marioX + 1;
-	}
-
-	if(NoseY < 250){
-		marioY = marioY - 1;
-	}
 }
 
 function modelLoaded(){
-	console.log("Model Loaded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	console.log("model loaded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 }
 
 function gotPoses(results){
-if(results.length > 0){
-	NoseX = results[0].pose.nose.x;
-	NoseY = results[0].pose.nose.y;
-	console.log("nose x = "+ NoseX + "Nose Y = "+ NoseY);
+if( results.length > 0){
+console.log(results);
+noseX = results[0].pose.nose.x;
+noseY = results[0].pose.nose.y;
+
 }
 }
-
-
